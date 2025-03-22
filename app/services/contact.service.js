@@ -58,7 +58,7 @@ class ContactService {
         { $set: update },
         { returnDocument: "after" }
         );
-        return result.value; //return result;
+        return result; //return result;
     }
 
     async delete(id) {
@@ -71,10 +71,12 @@ class ContactService {
     async findFavorite() {
         return await this.find({ favorite: true });
     }
+    
     async deleteAll() {
         const result = await this.Contact.deleteMany({});
     return result.deletedCount;
     }
+
 }
 
 module.exports = ContactService;
